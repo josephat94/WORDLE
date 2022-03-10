@@ -1,0 +1,50 @@
+.switch{
+width: 60px;
+height: 30px;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+cursor:pointer;
+transition: all .3s;
+position: relative;
+}
+.sw-light{
+    background: linear-gradient(180deg, #66FFED 0%, #FFEEB2 100%);
+    box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    transition: all .3s;
+}
+.sw-dark{
+    background: linear-gradient(183.67deg, #2B4485 6.6%, #AFCAFF 96.98%);
+box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.25);
+border-radius: 50px;
+transition: all .3s;
+}
+
+.circle-light{
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    right: 4px;
+    border-radius: 50%;
+    transition: all .3s;
+    background: linear-gradient(180deg, #FFC123 0%, #F8832E 100%);   
+}
+.circle-dark{
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    left: 4px;
+    border-radius: 50%;
+    transition: all .3s;
+    background: linear-gradient(180deg, #CEE5FF 0%, #EDF6FF 99.99%, #F1F9FF 100%);
+}
+.circle-light .shine{
+    transition: all .3s;
+    width: 23px;
+    height: 23px;
+    background-image: url('../../../assets/shine.svg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
