@@ -1,0 +1,30 @@
+
+#BeginCtn{
+    width: 546px;
+    background: rgba(243, 243, 243, 0.89);
+    border: 1px solid #000000;
+}
+
+#BeginCtn .title-begin{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 41px;
+    display: flex;
+    color: #000000;
+    margin-bottom: 2rem;;
+}
+
+#BeginCtn p{
+    font-size: 19px;
+    font-weight: normal;
+}
+.text-line{
+    margin-bottom: 22px;
+    padding-left: 42px;
+    padding-right: 26px;
+}
+#BeginCtn h4{
+    font-size: 19px;
+    font-weight: bold;
+}
