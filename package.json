@@ -2,7 +2,7 @@
   "name": "wordle",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://josephat94.github.io",
+  "homepage": "https://josephat94.github.io/WORDLE/",
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@reduxjs/toolkit": "^1.6.1",
