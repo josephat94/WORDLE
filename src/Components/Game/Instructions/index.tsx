@@ -37,7 +37,7 @@ const Instructions = () => {
     return (
         <Transition.Root show={openInstructions} as={Fragment}>
             <Dialog ref={titleRef} as="div" className="fixed z-10 inset-0 overflow-y-auto w-[100%] " initialFocus={cancelButtonRef} onClose={handleAccept}>
-                <div className="flex items-center justify-center min-h-screen  px-4 pb-20 text-center  ">
+                <div className="flex items-center justify-center min-h-screen  px-4 pb-20 text-center pt-[87px] ">
                     <div style={{ position: "absolute", top: "0" }}></div>
                     <div className="fixed inset-0 bg-modal dark:bg-modal-dark bg-opacity-75 transition-opacity fade-in" aria-hidden="true"></div>
 
