@@ -9,5 +9,5 @@ Puedes ver la palabra a buscar desde la consola en las opciones de desarrollador
 
 Para correr el proyecto primero debes:  
 
-### Just run npm i 
-### And  npm start
+### Solo corre npm i 
+### Y npm start
