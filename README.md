@@ -7,7 +7,7 @@ Puedes ver la palabra a buscar desde la consola en las opciones de desarrollador
 
 ## Available Scripts
 
-Para correr el proyecto primero debes:  
+Para correr el proyecto primero debes correr:  
 
-### Solo corre npm i 
-### Y npm start
+### npm i 
+### npm start
