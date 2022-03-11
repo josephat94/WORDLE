@@ -1,49 +1,63 @@
 import Board from "../../Components/Game/Board";
 import KeyBoard from "../../Components/Game/KeyBoard";
 import TopBar from "../../Components/Game/TopBar";
-
-import { useEffect, useState } from "react";
-
+import { useEffect } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { increaseGame,  selectWord, setGameLost, setMinutes, setResetBoard, setSeconds, setWordToGuess } from "../../redux/reducers/game";
+import { increaseGame, selectWord, setMinutes, setResetBoard, setSeconds } from "../../redux/reducers/game";
 import Score from "../../Components/Game/Score";
+import Instructions from "../../Components/Game/Instructions";
 
 function Game() {
     const dispatch = useDispatch();
     const minutes = useSelector((state: RootStateOrAny) => state.game.minutes)
     const seconds = useSelector((state: RootStateOrAny) => state.game.seconds)
-
+    const statusGame = useSelector((state: RootStateOrAny) => state.game.statusGame)
     useEffect(() => {
         dispatch(selectWord())
     }, [])
 
     useEffect(() => {
+        let timer;
+        let timerId;
         if (minutes >= 0) {
-            seconds >= 0 && setTimeout(() => {
-                if (seconds === 0) {
-                    dispatch(setMinutes(minutes - 1))
-                    dispatch(setSeconds(60))
+            if (seconds >= 0) {
+                timer = () => setTimeout(() => {
+                    if (seconds === 0) {
+                        dispatch(setMinutes(minutes - 1))
+                        dispatch(setSeconds(60))
 
-                } else {
-                    dispatch(setSeconds(seconds - 1))
-                }
-            }, 1000);
-        } else {          
-            dispatch(increaseGame());
-            dispatch(setResetBoard())
+                    } else {
+                        dispatch(setSeconds(seconds - 1))
+                    }
+                }, 1000);
+
+                timerId = timer();
+            }
+        } else {
+            if (statusGame === 'PLAYING') {              
+                dispatch(increaseGame());
+                dispatch(setResetBoard())
+            }
+
         }
-    }, [seconds]);
+
+        if(statusGame==="LOST" || statusGame==="WON"){
+            if(timerId){
+                clearTimeout(timerId);
+            }
+        }  
+
+    });
 
     return (
-        <div className=" flex pt-[83px] w-screen justify-center">
+        <div className=" flex pt-[23px] w-screen justify-center">
             <div className="flex flex-col w-[638px]">
-                {minutes + ":" + seconds}
                 <TopBar />
                 <Board />
                 <KeyBoard />
             </div>
-
-            <Score></Score>
+            <Score />
+            <Instructions />
         </div>
     );
 }

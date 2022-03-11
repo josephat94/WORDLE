@@ -9,6 +9,7 @@ function Letter({ letter = "A", bg = "bg-gray-100", border = "", text = "", ...p
             font-extrabold
             text-[35px]
             uppercase
+            scale-in-center 
             `}
         >
             {letter}

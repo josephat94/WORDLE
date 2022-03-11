@@ -1,7 +1,6 @@
 
 #BeginCtn{
     width: 546px;
-    background: rgba(243, 243, 243, 0.89);
     border: 1px solid #000000;
 }
 
@@ -11,7 +10,6 @@
     font-size: 35px;
     line-height: 41px;
     display: flex;
-    color: #000000;
     margin-bottom: 2rem;;
 }
 

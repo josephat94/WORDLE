@@ -1,32 +1,30 @@
 
 import { useEffect, useState } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { increaseGame, increaseGameWon, refreshResetBoard, selectWord, setGameLost, setGameWon, setOpenScore, setPlayingMode } from "../../../redux/reducers/game";
+import { increaseGame, increaseGameWon, refreshResetBoard, selectWord, setGameLost, setGameWon, setGame } from "../../../redux/reducers/game";
 import { GUESS } from "../../../utils/constants/begin";
 import Letter from "../../Letter";
 
+
 const Board = () => {
-    const [game, setGame] = useState({
-        text: "",
-        currentAttempt: 1
-    })
+
     const [attempt, setAttempt] = useState(JSON.parse(JSON.stringify(GUESS)))
     const [attempt2, setAttempt2] = useState(JSON.parse(JSON.stringify(GUESS)))
     const [attempt3, setAttempt3] = useState(JSON.parse(JSON.stringify(GUESS)))
     const [attempt4, setAttempt4] = useState(JSON.parse(JSON.stringify(GUESS)))
     const [attempt5, setAttempt5] = useState(JSON.parse(JSON.stringify(GUESS)))
+
     const wordToGuess = useSelector((state: RootStateOrAny) => state.game.wordToGuess)
-    const gamesPlayed = useSelector((state: RootStateOrAny) => state.game.gamesPlayed)
-    const gamesWon = useSelector((state: RootStateOrAny) => state.game.gamesWon)
     const statusGame = useSelector((state: RootStateOrAny) => state.game.statusGame)
     const resetBoard = useSelector((state: RootStateOrAny) => state.game.resetBoard)
+    const game = useSelector((state: RootStateOrAny) => state.game.game)
     const dispatch = useDispatch();
 
     function handleKeyPress(e: any) {
         const key = String(e.key).toLowerCase();
         if ("abcdefghijklmnopqrstuvwxyz".includes(key.toLowerCase()) && statusGame === "PLAYING") {
 
-            setGame({ ...game, text: game.text + key });
+            dispatch(setGame({ ...game, text: game.text + key }));
         }
 
     }
@@ -43,6 +41,7 @@ const Board = () => {
         for (let char of game.text) {
             attempCpy[i].letter = char;
             attempCpy[i].bg = "bg-gray-box";
+            attempCpy[i].text = "rotate-in-2-cw text-white";
             if (game.text.length === 5 && wordToGuess.includes(char)) {
                 attempCpy[i].bg = "bg-yellow-box";
                 for (let index = 0; index < wordToGuess.length; index++) {
@@ -60,7 +59,7 @@ const Board = () => {
     useEffect(() => {
         if (game.text) {
             if (game.text.length === 5) {
-                setGame({ currentAttempt: game.currentAttempt + 1, text: "" });
+                dispatch(setGame({ currentAttempt: game.currentAttempt + 1, text: "" }));
             }
 
             switch (game.currentAttempt) {
@@ -96,27 +95,26 @@ const Board = () => {
             }
         }
 
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [game.text, game.currentAttempt])
+    useEffect(() => {
         if (statusGame) {
             if (statusGame === "WON" || statusGame === "LOST") {
-                setGame({ text: "", currentAttempt: 1 });
+                dispatch(setGame({ text: "", currentAttempt: 1 }));
                 handleResetBoard()
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [statusGame])
+
+    useEffect(() => {
 
         if (resetBoard) {
             dispatch(refreshResetBoard())
         }
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [game.text, game.currentAttempt, statusGame, resetBoard])
-
-    /*     useEffect(() => {
-            if (currentAttempt) {
-                setText("");
-            }
-    
-        }, [currentAttempt])
-     */
+    }, [resetBoard])
 
     const handleResetBoard = () => {
         dispatch(selectWord())

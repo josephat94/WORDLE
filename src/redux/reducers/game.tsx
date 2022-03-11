@@ -17,11 +17,16 @@ export const gameSlice = createSlice({
         gamesPlayed: 0,
         gamesWon: 0,
         wordsUsed: new Array<string>(),
-        openScore: true,
-        minutes: 5,
-        seconds: 60,
-        statusGame: "PLAYING", //* WON / LOST
-        resetBoard: false
+        openScore: false,
+        openInstructions: true,
+        minutes: -1,
+        seconds: 0,
+        statusGame: "STOPPED", //* PLAYING / WON / LOST
+        resetBoard: false,
+        game: {
+            text: "",
+            currentAttempt: 1
+        }
     },
     reducers: {
         setWordToGuess: (state, action) => {
@@ -43,7 +48,7 @@ export const gameSlice = createSlice({
         },
         setResetBoard: (state) => {
             state.resetBoard = true;
-            state.minutes = 5;
+            state.minutes = 4;
             state.seconds = 60;
             state.statusGame = "LOST"
         },
@@ -56,13 +61,31 @@ export const gameSlice = createSlice({
             state.statusGame = "WON"
         },
         setPlayingMode: (state) => {
-            state.openScore = false;
-            state.statusGame = "PLAYING"
-
+          
+            if(state.statusGame!=="PLAYING"){
+                state.openScore = false;
+                state.statusGame = "PLAYING"
+                state.minutes = 4;
+                state.seconds = 60;
+            }else{
+                state.openScore = false;
+                state.statusGame = "PLAYING"
+            }
         },
         showScore: (state) => {
             state.openScore = true;
-
+        },
+        showInstructions: (state) => {
+            state.openInstructions = true;
+        },
+        hideInstructions: (state) => {
+            state.openInstructions = false;
+        },
+        initGame: (state) => {
+            state.minutes = 4;
+            state.seconds = 60;
+            state.statusGame = 'PLAYING'
+            state.openInstructions = false
         },
         selectWord: (state) => {
 
@@ -73,10 +96,10 @@ export const gameSlice = createSlice({
                 // eslint-disable-next-line no-loop-func
                 wordIsAlreadyUsed = state.wordsUsed.some(function (item: any) { return String(item).toLocaleLowerCase() === String(newWord).toLocaleLowerCase() });
             }
-         
+
             state.wordToGuess = newWord;
-            const list= JSON.parse(JSON.stringify(state.wordsUsed));
-            list.push(newWord);           
+            const list = JSON.parse(JSON.stringify(state.wordsUsed));
+            list.push(newWord);
             state.wordsUsed = list
             console.log({ newWord, wordsUsed: state.wordsUsed })
         },
@@ -86,6 +109,9 @@ export const gameSlice = createSlice({
         },
         setSeconds: (state, action) => {
             state.seconds = action.payload
+        },
+        setGame:(state, action) => {
+            state.game = action.payload
         },
     },
 })
@@ -104,7 +130,11 @@ export const {
     selectWord,
     setPlayingMode,
     setMinutes, setSeconds,
-    showScore
+    showScore,
+    initGame,
+    showInstructions,
+    hideInstructions,
+    setGame
 } = gameSlice.actions
 
 export default gameSlice.reducer;

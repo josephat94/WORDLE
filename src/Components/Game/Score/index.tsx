@@ -7,7 +7,8 @@ const Score = () => {
     const gamesWon = useSelector((state: RootStateOrAny) => state.game.gamesWon)
     const openScore = useSelector((state: RootStateOrAny) => state.game.openScore)
     const statusGame = useSelector((state: RootStateOrAny) => state.game.statusGame)
-    const wordToGuess= useSelector((state: RootStateOrAny) => state.game.wordToGuess)
+
+    const wordsUsed= useSelector((state: RootStateOrAny) => state.game.wordsUsed)
     const minutes = useSelector((state: RootStateOrAny) => state.game.minutes)
     const seconds = useSelector((state: RootStateOrAny) => state.game.seconds)
 
@@ -15,6 +16,7 @@ const Score = () => {
     const dispatch = useDispatch();
 
     function handleAccept() {
+        
         dispatch(setPlayingMode())
     }
     return (
@@ -22,13 +24,18 @@ const Score = () => {
             <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" initialFocus={cancelButtonRef} onClose={handleAccept}>
                 <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
 
-                    <div className="fixed inset-0 bg-modal bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                    <div className="fixed inset-0 bg-modal dark:bg-modal-dark bg-opacity-75 transition-opacity fade-in" aria-hidden="true"></div>
 
 
                     <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
                     <div className="border border-solid border-black
-                    w-[546px] pb-[24px] relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all pt-[59px] ">
+                    w-[546px] pb-[24px] relative align-bottom bg-modal-ctn dark:bg-modal-ctn-dark 
+                    rounded-lg text-left overflow-hidden shadow-xl transform transition-all pt-[59px]
+                    text-black
+                    dark:text-white
+                    slide-in-bottom
+                    ">
                         <h3 className="font-extrabold text-center text-[35px]">
                             Estadísticas
                         </h3>
@@ -53,7 +60,7 @@ const Score = () => {
                         {statusGame==="LOST" &&
                               <div className="mt-[43px] flex justify-between items-center w-[100%] h-[57px]">
                               <h4 className="text-center text-[19px] font-normal w-[100%]">
-                                La palabra era: <b className="font-bold uppercase">{wordToGuess}  </b> 
+                                La palabra era: <b className="font-bold uppercase">{wordsUsed[wordsUsed.length-2]}  </b> 
                               </h4>
                           </div>
                         }
