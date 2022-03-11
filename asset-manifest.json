@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/WORDLE/static/css/main.88a09b9d.css",
+    "main.js": "/WORDLE/static/js/main.ef6666de.js",
+    "static/js/787.e01666d6.chunk.js": "/WORDLE/static/js/787.e01666d6.chunk.js",
+    "static/media/question-dark.svg": "/WORDLE/static/media/question-dark.96639acbca97f8e8c4885021bc3460ce.svg",
+    "static/media/question.svg": "/WORDLE/static/media/question.b08bf4cfe62dec313b9c672ceea93d07.svg",
+    "index.html": "/WORDLE/index.html",
+    "static/media/chart-dark.svg": "/WORDLE/static/media/chart-dark.64a55f4c1aef6c1ed8d1bf9a08d1a821.svg",
+    "static/media/del.svg": "/WORDLE/static/media/del.c311a22a2ad962d1ffc0868c727a3227.svg",
+    "static/media/shine.svg": "/WORDLE/static/media/shine.b68f5be41dd74b3e76b9.svg",
+    "static/media/chart.svg": "/WORDLE/static/media/chart.d9dfb3ab09c9d7358f8112df99f3b304.svg",
+    "main.88a09b9d.css.map": "/WORDLE/static/css/main.88a09b9d.css.map",
+    "main.ef6666de.js.map": "/WORDLE/static/js/main.ef6666de.js.map",
+    "787.e01666d6.chunk.js.map": "/WORDLE/static/js/787.e01666d6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88a09b9d.css",
+    "static/js/main.ef6666de.js"
+  ]
+}
