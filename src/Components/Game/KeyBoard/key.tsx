@@ -1,5 +1,4 @@
 import React from "react";
-import { RootStateOrAny, useSelector } from "react-redux";
 
 interface Props {
     children: React.ReactNode;

@@ -45,7 +45,7 @@ const Board = () => {
             if (game.text.length === 5 && wordToGuess.includes(char)) {
                 attempCpy[i].bg = "bg-yellow-box";
                 for (let index = 0; index < wordToGuess.length; index++) {
-                    if (wordToGuess[index] === char && index == i) {
+                    if (wordToGuess[index] === char && index === i) {
                         attempCpy[i].bg = "bg-green-box";
                     }
                 }

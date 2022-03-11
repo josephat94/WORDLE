@@ -14,6 +14,7 @@ function Game() {
     const statusGame = useSelector((state: RootStateOrAny) => state.game.statusGame)
     useEffect(() => {
         dispatch(selectWord())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

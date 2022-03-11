@@ -1,7 +1,7 @@
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef } from "react";
-import { setOpenScore, setPlayingMode } from "../../../redux/reducers/game";
+import { setPlayingMode } from "../../../redux/reducers/game";
 const Score = () => {
     const gamesPlayed = useSelector((state: RootStateOrAny) => state.game.gamesPlayed)
     const gamesWon = useSelector((state: RootStateOrAny) => state.game.gamesWon)
