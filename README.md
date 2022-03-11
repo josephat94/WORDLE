@@ -1,13 +1,13 @@
 # WORDLE
 
-Proyect created to DD3 test
+Proyecto creado para la prueba de DD3
 
 ## TIPS
-You can view the secret word in the debug.options in console
+Puedes ver la palabra a buscar desde la consola en las opciones de desarrollador
 
 ## Available Scripts
 
-In the project directory, you can run:
+Para correr el proyecto primero debes:  
 
 ### Just run npm i 
 ### And  npm start
