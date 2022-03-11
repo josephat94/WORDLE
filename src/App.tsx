@@ -9,7 +9,7 @@ function App() {
 
     <div className="h-screen w-100 overflow-y-auto bg-white dark:bg-dark-bg overflow-x-hidden">
       <Routes >
-        <Route path="/" element={<Game />} />
+        <Route path="*" element={<Game />} />
       </Routes>
     </div>
   );
