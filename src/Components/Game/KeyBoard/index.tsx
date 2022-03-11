@@ -13,7 +13,7 @@ const KeyBoard = () => {
     const dispatch = useDispatch();
     const handleClick = (key: string) => {
         if (key !== "ENTER" && key !== "--") {
-            if ("abcdefghijklmnopqrstuvwxyz".includes(key.toLowerCase())) {
+            if ("abcdefghijklmnñopqrstuvwxyz".includes(key.toLowerCase())) {
                 dispatch(setGame({ ...game, text: game.text + String(key).toLowerCase() }));
             }
             return;

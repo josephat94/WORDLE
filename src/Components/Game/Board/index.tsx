@@ -21,8 +21,9 @@ const Board = () => {
     const dispatch = useDispatch();
 
     function handleKeyPress(e: any) {
+        
         const key = String(e.key).toLowerCase();
-        if ("abcdefghijklmnopqrstuvwxyz".includes(key.toLowerCase()) && statusGame === "PLAYING") {
+        if ("abcdefghijklmnñopqrstuvwxyz".includes(key.toLowerCase()) && statusGame === "PLAYING") {
 
             dispatch(setGame({ ...game, text: game.text + key }));
         }
